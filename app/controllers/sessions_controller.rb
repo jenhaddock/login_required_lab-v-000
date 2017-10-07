@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_login
 
   def new
 
@@ -10,6 +9,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    if !session[:name].nil?
+      session.delete :name
+    end
+    redirect_to '/'
   end
 end
